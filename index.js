@@ -1,10 +1,14 @@
+#!/usr/bin/env node
 const fs = require("fs")
 const path = require("path")
 const inquirer = require("inquirer")
 const { createDirectory, copyContents } = require('./templater')
 
 const templatesPath = path.resolve(process.env.HOME, "templates")
-const choices = fs.readdirSync(templatesPath)
+// TODO: Ignores first two items
+const choices = fs.readdirSync(templatesPath).slice(2)
+
+console.log(choices)
 
 const validateName = input => {
   if (/^([A-Za-z\-\_\d])+$/.test(input)) {
@@ -28,7 +32,7 @@ const QUESTIONS = [
   }
 ]
 
-const pathForTemplate = name => 
+const pathForTemplate = name =>
   `${templatesPath}/${name}`
 
 inquirer.prompt(QUESTIONS)
