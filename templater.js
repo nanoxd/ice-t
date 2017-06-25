@@ -2,6 +2,12 @@ const fs = require('fs')
 
 const CURRENT_DIRECTORY = process.cwd()
 
+const BLACKLIST = ['node_modules']
+
+String.prototype.isIncluded = function (array) {
+  return array.some(s => this.includes(s))
+}
+
 // TODO: Refactor to resolve path
 const createDirectory = (name, inDirectory = CURRENT_DIRECTORY) =>
   fs.mkdirSync(`${inDirectory}/${name}`)
@@ -22,11 +28,15 @@ const copyContents = (templatePath, projectPath) => {
       const writePath = `${directoryProjectPath}/${file}`
       fs.writeFileSync(writePath, contents, 'utf8')
     } else if (stat.isDirectory()) {
-      fs.mkdirSync(`${directoryProjectPath}/${file}`)
-      console.log('Creating directory: ', file)
+      if (!file.isIncluded(BLACKLIST)) {
+        fs.mkdirSync(`${directoryProjectPath}/${file}`)
+        console.log('Creating directory: ', file)
 
-      // Recurse
-      copyContents(`${templatePath}/${file}`, `${projectPath}/${file}`)
+        // Recurse
+        copyContents(`${templatePath}/${file}`, `${projectPath}/${file}`)
+      } else {
+        return
+      }
     }
   })
 }
