@@ -1,6 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 const inquirer = require("inquirer")
+const { createDirectory, copyContents } = require('./templater')
 
 const templatesPath = path.resolve(process.env.HOME, "templates")
 const choices = fs.readdirSync(templatesPath)
@@ -27,6 +28,14 @@ const QUESTIONS = [
   }
 ]
 
+const pathForTemplate = name => 
+  `${templatesPath}/${name}`
+
 inquirer.prompt(QUESTIONS)
-    .then(console.log)
+    .then(answers => {
+      const { template, name } = answers
+
+      createDirectory(name)
+      copyContents(pathForTemplate(template), name)
+    })
     .catch(console.log)
