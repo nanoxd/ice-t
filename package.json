@@ -17,8 +17,21 @@
     "inquirer": "^3.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^20.0.2",
     "@types/node": "^8.0.4",
     "jest": "^20.0.4",
+    "ts-jest": "^20.0.6",
     "typescript": "^2.3.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    }
   }
 }
