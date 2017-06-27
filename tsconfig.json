@@ -10,7 +10,6 @@
     "removeComments": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
-    "experimentalDecorators": true,
     "types":[
       "jest",
       "node"
