@@ -8,8 +8,6 @@ const templatesPath = path.resolve(process.env.HOME, "templates")
 // TODO: Ignores first two items
 const choices = fs.readdirSync(templatesPath).slice(2)
 
-console.log(choices)
-
 const validateName = input => {
   if (/^([A-Za-z\-\_\d])+$/.test(input)) {
     return true
