@@ -30,7 +30,7 @@
       "js"
     ],
     "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts)$",
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     }

@@ -1,18 +1,24 @@
-const fs = require('fs')
+import * as fs from 'fs'
 
 const CURRENT_DIRECTORY = process.cwd()
 
 const BLACKLIST = ['node_modules']
+
+declare global {
+  interface String {
+    isIncluded(array: string[]): boolean
+  }
+}
 
 String.prototype.isIncluded = function (array) {
   return array.some(s => this.includes(s))
 }
 
 // TODO: Refactor to resolve path
-const createDirectory = (name, inDirectory = CURRENT_DIRECTORY) =>
+export const createDirectory = (name, inDirectory = CURRENT_DIRECTORY) =>
   fs.mkdirSync(`${inDirectory}/${name}`)
 
-const copyContents = (templatePath, projectPath) => {
+export const copyContents = (templatePath, projectPath) => {
   const filesToCreate = fs.readdirSync(templatePath)
 
   filesToCreate.forEach(file => {
@@ -41,7 +47,10 @@ const copyContents = (templatePath, projectPath) => {
   })
 }
 
-module.exports = {
-  copyContents,
-  createDirectory
+export const validateName = input => {
+  if (/^([A-Za-z\-\_\d])+$/.test(input)) {
+    return true
+  } else {
+    return 'Project name may only include letters, numbers, underscores and hashes.'
+  }
 }

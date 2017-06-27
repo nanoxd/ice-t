@@ -1,20 +1,12 @@
 #!/usr/bin/env node
-const fs = require("fs")
-const path = require("path")
-const inquirer = require("inquirer")
-const { createDirectory, copyContents } = require('./templater')
+import * as fs from 'fs'
+import * as path from 'path'
+import * as inquirer from 'inquirer'
+import { createDirectory, copyContents, validateName } from './templater'
 
 const templatesPath = path.resolve(process.env.HOME, "templates")
 // TODO: Ignores first two items
 const choices = fs.readdirSync(templatesPath).slice(2)
-
-const validateName = input => {
-  if (/^([A-Za-z\-\_\d])+$/.test(input)) {
-    return true
-  } else {
-    return 'Project name may only include letters, numbers, underscores and hashes.'
-  }
-}
 
 const QUESTIONS = [
   {
