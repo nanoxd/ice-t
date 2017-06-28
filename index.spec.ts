@@ -28,4 +28,11 @@ describe('replacements', () => {
 
     expect(replaceSnakeCase(title, replacement)).toBe('super_cool_drumsticks')
   })
+
+  it('should convert a camel case string to snake case', () => {
+    const title = 'superCoolDrumsticks'
+    const replacement = '__REPLACE_ME_SC__'
+
+    expect(replaceSnakeCase(title, replacement)).toBe('super_cool_drumsticks')
+  })
 })
