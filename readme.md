@@ -10,6 +10,8 @@ npm install -g @nanoxd/ice-t
 yarn global add @nanoxd/ice-t
 ```
 
+After installation, `ice-t` will prompt you to select any item located at `~/templates`.
+
 ## TODO:
 
 - [ ] Make package configurable
