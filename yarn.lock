@@ -33,6 +33,10 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/camelcase@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.npmjs.org/@types/camelcase/-/camelcase-0.0.30.tgz#b17d7c016673bd9ebb11e1812d8732c319e5de3f"
+
 "@types/decamelize@^0.0.30":
   version "0.0.30"
   resolved "https://registry.npmjs.org/@types/decamelize/-/decamelize-0.0.30.tgz#a05673d152d9942e946e19b3d0584a445c665bd1"
