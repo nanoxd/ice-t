@@ -33,6 +33,10 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/camelcase@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.npmjs.org/@types/camelcase/-/camelcase-0.0.30.tgz#b17d7c016673bd9ebb11e1812d8732c319e5de3f"
+
 "@types/inquirer@^0.0.35":
   version "0.0.35"
   resolved "https://registry.npmjs.org/@types/inquirer/-/inquirer-0.0.35.tgz#e054657cf2d10963823957d4d06ec244f05c65be"
@@ -1712,6 +1716,10 @@ locate-path@^2.0.0:
 lodash.chunk@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/lodash.chunk/-/lodash.chunk-4.2.0.tgz#66e5ce1f76ed27b4303d8c6512e8d1216e8106bc"
+
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmjs.org/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
 
 lodash@^4.14.0, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
