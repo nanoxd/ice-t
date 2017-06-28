@@ -1,5 +1,4 @@
 import * as fs from 'fs'
-import * as decamelize from 'decamelize'
 import * as camelcase from 'camelcase'
 
 const CURRENT_DIRECTORY = process.cwd()

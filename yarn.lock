@@ -37,10 +37,6 @@
   version "0.0.30"
   resolved "https://registry.npmjs.org/@types/camelcase/-/camelcase-0.0.30.tgz#b17d7c016673bd9ebb11e1812d8732c319e5de3f"
 
-"@types/decamelize@^0.0.30":
-  version "0.0.30"
-  resolved "https://registry.npmjs.org/@types/decamelize/-/decamelize-0.0.30.tgz#a05673d152d9942e946e19b3d0584a445c665bd1"
-
 "@types/inquirer@^0.0.35":
   version "0.0.35"
   resolved "https://registry.npmjs.org/@types/inquirer/-/inquirer-0.0.35.tgz#e054657cf2d10963823957d4d06ec244f05c65be"
@@ -683,7 +679,7 @@ debug@^2.1.1, debug@^2.2.0, debug@^2.6.3:
   dependencies:
     ms "2.0.0"
 
-decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.2.0:
+decamelize@^1.0.0, decamelize@^1.1.1:
   version "1.2.0"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
