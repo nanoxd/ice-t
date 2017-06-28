@@ -1,4 +1,6 @@
 import * as fs from 'fs'
+import * as decamelize from 'decamelize'
+import * as camelcase from 'camelcase'
 
 const CURRENT_DIRECTORY = process.cwd()
 
@@ -45,7 +47,7 @@ export const readFile = (filePath: string) => fs.readFileSync(filePath, 'utf8')
 export const replaceTitle = (title: string, inFile: string) =>
   inFile.replace('__REPLACE_ME_TITLE__', title)
 export const replaceCamelCase = (st: string, inFile: string) =>
-  inFile.replace('__REPLACE_ME_CC__', st)
+  inFile.replace('__REPLACE_ME_CC__', camelcase(st))
 export const replaceSnakeCase = (st: string, inFile: string) =>
   inFile.replace('__REPLACE_ME_SC__', st)
 
