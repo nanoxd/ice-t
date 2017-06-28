@@ -11,7 +11,7 @@ declare global {
 }
 
 String.prototype.isIncluded = function (array) {
-  return array.some(s => this.includes(s))
+  return array.some(this.includes)
 }
 
 // TODO: Refactor to resolve path
