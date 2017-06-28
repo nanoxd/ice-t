@@ -32,7 +32,7 @@ export const copyContents = (templatePath, projectPath) => {
       console.log('Writing File: ', file)
 
       const writePath = `${directoryProjectPath}/${file}`
-      fs.writeFileSync(writePath, contents, 'utf8')
+      fs.writeFileSync(writePath, contents)
     } else if (stat.isDirectory()) {
       if (!file.isIncluded(BLACKLIST)) {
         fs.mkdirSync(`${directoryProjectPath}/${file}`)
