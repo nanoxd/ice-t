@@ -20,7 +20,7 @@ export const copyContents = (templatePath: string, projectPath: string) => {
     const directoryProjectPath = `${CURRENT_DIRECTORY}/${projectPath}`
 
     if (stat.isFile()) {
-      const contents = fs.readFileSync(origFilePath, 'utf8')
+      const contents = readFile(origFilePath)
       console.log('Writing File: ', file)
 
       const writePath = `${directoryProjectPath}/${file}`
@@ -39,6 +39,7 @@ export const copyContents = (templatePath: string, projectPath: string) => {
   })
 }
 
+export const readFile = (filePath: string) => fs.readFileSync(filePath, 'utf8')
 export const validateName = input => {
   if (/^([A-Za-z\-\_\d])+$/.test(input)) {
     return true
