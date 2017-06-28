@@ -7,10 +7,10 @@ const BLACKLIST = ['node_modules']
 export const isIncluded = (s: string, array: string[]) => array.some(s.includes)
 
 // TODO: Refactor to resolve path
-export const createDirectory = (name, inDirectory = CURRENT_DIRECTORY) =>
+export const createDirectory = (name: string, inDirectory = CURRENT_DIRECTORY) =>
   fs.mkdirSync(`${inDirectory}/${name}`)
 
-export const copyContents = (templatePath, projectPath) => {
+export const copyContents = (templatePath: string, projectPath: string) => {
   const filesToCreate = fs.readdirSync(templatePath)
 
   filesToCreate.forEach(file => {
