@@ -25,9 +25,12 @@ export const copyContents = (templatePath: string, projectPath: string) => {
 
     if (stat.isFile()) {
       const contents = readFile(origFilePath)
-      console.log('Writing File: ', file)
+
+      console.log('Replacing strings')
+      replaceWith(projectPath, contents)
 
       const writePath = `${directoryProjectPath}/${file}`
+      console.log('Writing file: ', writePath)
       fs.writeFileSync(writePath, contents)
     } else if (stat.isDirectory()) {
       if (!isIncluded(file, BLACKLIST)) {
@@ -50,6 +53,12 @@ export const replaceCamelCase = (st: string, inFile: string) =>
   inFile.replace('__REPLACE_ME_CC__', camelcase(st))
 export const replaceSnakeCase = (st: string, inFile: string) =>
   inFile.replace('__REPLACE_ME_SC__', snakeCase(st))
+
+export const replaceWith = (string: string, inFile: string) => {
+  replaceTitle(string, inFile)
+  replaceCamelCase(string, inFile)
+  replaceSnakeCase(string, inFile)
+}
 
 export const validateName = input => {
   if (/^([A-Za-z\-\_\d])+$/.test(input)) {
