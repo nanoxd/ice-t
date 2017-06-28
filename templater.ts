@@ -7,8 +7,10 @@ const BLACKLIST = ['node_modules']
 export const isIncluded = (s: string, array: string[]) => array.some(s.includes)
 
 // TODO: Refactor to resolve path
-export const createDirectory = (name: string, inDirectory = CURRENT_DIRECTORY) =>
-  fs.mkdirSync(`${inDirectory}/${name}`)
+export const createDirectory = (
+  name: string,
+  inDirectory = CURRENT_DIRECTORY
+) => fs.mkdirSync(`${inDirectory}/${name}`)
 
 export const copyContents = (templatePath: string, projectPath: string) => {
   const filesToCreate = fs.readdirSync(templatePath)
@@ -40,9 +42,12 @@ export const copyContents = (templatePath: string, projectPath: string) => {
 }
 
 export const readFile = (filePath: string) => fs.readFileSync(filePath, 'utf8')
-export const replaceTitle = (title: string, inFile: string) => inFile.replace('__REPLACE_ME_TITLE__', title)
-export const replaceCamelCase = (st: string, inFile: string) => inFile.replace('__REPLACE_ME_CC__', st)
-export const replaceSnakeCase = (st: string, inFile: string) => inFile.replace('__REPLACE_ME_SC__', st)
+export const replaceTitle = (title: string, inFile: string) =>
+  inFile.replace('__REPLACE_ME_TITLE__', title)
+export const replaceCamelCase = (st: string, inFile: string) =>
+  inFile.replace('__REPLACE_ME_CC__', st)
+export const replaceSnakeCase = (st: string, inFile: string) =>
+  inFile.replace('__REPLACE_ME_SC__', st)
 
 export const validateName = input => {
   if (/^([A-Za-z\-\_\d])+$/.test(input)) {

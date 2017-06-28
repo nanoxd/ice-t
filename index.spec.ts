@@ -8,6 +8,8 @@ describe('validateName', () => {
 
   it('should return error when a name has spaces', () => {
     const invalidName = 'A name with spaces'
-    expect(validateName(invalidName)).toBe("Project name may only include letters, numbers, underscores and hashes.")
+    expect(validateName(invalidName)).toBe(
+      'Project name may only include letters, numbers, underscores and hashes.'
+    )
   })
 })

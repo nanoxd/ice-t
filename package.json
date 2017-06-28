@@ -10,7 +10,8 @@
     "prepare": "npm run build",
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
   },
   "keywords": [],
   "author": "Fernando Paredes <nano@fdp.io>",
@@ -22,7 +23,9 @@
     "@types/inquirer": "^0.0.35",
     "@types/jest": "^20.0.2",
     "@types/node": "^8.0.4",
+    "husky": "^0.14.1",
     "jest": "^20.0.4",
+    "lint-staged": "^4.0.0",
     "prettier": "^1.5.2",
     "ts-jest": "^20.0.6",
     "typescript": "^2.4.1"
@@ -37,5 +40,11 @@
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --no-semi --single-quote --trailing-comma es5 --write",
+      "git add"
+    ]
   }
 }
