@@ -4,15 +4,7 @@ const CURRENT_DIRECTORY = process.cwd()
 
 const BLACKLIST = ['node_modules']
 
-declare global {
-  interface String {
-    isIncluded(array: string[]): boolean
-  }
-}
-
-String.prototype.isIncluded = function (array) {
-  return array.some(this.includes)
-}
+export const isIncluded = (s: string, array: string[]) => array.some(s.includes)
 
 // TODO: Refactor to resolve path
 export const createDirectory = (name, inDirectory = CURRENT_DIRECTORY) =>
@@ -34,7 +26,7 @@ export const copyContents = (templatePath, projectPath) => {
       const writePath = `${directoryProjectPath}/${file}`
       fs.writeFileSync(writePath, contents)
     } else if (stat.isDirectory()) {
-      if (!file.isIncluded(BLACKLIST)) {
+      if (!isIncluded(file, BLACKLIST)) {
         fs.mkdirSync(`${directoryProjectPath}/${file}`)
         console.log('Creating directory: ', file)
 
