@@ -1,5 +1,7 @@
 ## Current
 
+* Fix isIncluded crash
+
 ## 0.0.2
 
 * Migrated to TypeScript

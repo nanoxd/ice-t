@@ -1,4 +1,9 @@
-import { validateName, replaceCamelCase, replaceSnakeCase } from './templater'
+import {
+  validateName,
+  replaceCamelCase,
+  replaceSnakeCase,
+  isIncluded,
+} from './templater'
 
 describe('validateName', () => {
   it('should validate name', () => {
@@ -11,6 +16,22 @@ describe('validateName', () => {
     expect(validateName(invalidName)).toBe(
       'Project name may only include letters, numbers, underscores and hashes.'
     )
+  })
+})
+
+describe('isIncluded', () => {
+  it('should be true when string is included in array', () => {
+    const blacklist = ['node_modules']
+    const fakePath = 'node_modules/thing/one'
+
+    expect(isIncluded(fakePath, blacklist)).toBe(true)
+  })
+
+  it('should be false when string is not included in array', () => {
+    const blacklist = ['node_modules']
+    const fakePath = 'thing/one'
+
+    expect(isIncluded(fakePath, blacklist)).toBe(false)
   })
 })
 

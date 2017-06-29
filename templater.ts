@@ -6,7 +6,8 @@ const CURRENT_DIRECTORY = process.cwd()
 
 const BLACKLIST = ['node_modules']
 
-export const isIncluded = (s: string, array: string[]) => array.some(s.includes)
+export const isIncluded = (str: string, array: string[]) =>
+  array.some(s => str.includes(s))
 
 // TODO: Refactor to resolve path
 export const createDirectory = (
