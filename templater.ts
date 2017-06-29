@@ -48,21 +48,21 @@ export const copyContents = (templatePath: string, projectPath: string) => {
 }
 
 export const readFile = (filePath: string) => fs.readFileSync(filePath, 'utf8')
-export const replaceTitle = (title: string, inFile: string) =>
-  inFile.replace('__REPLACE_ME_TITLE__', title)
-export const replaceCamelCase = (st: string, inFile: string) =>
-  inFile.replace('__REPLACE_ME_CC__', camelcase(st))
-export const replaceSnakeCase = (st: string, inFile: string) =>
-  inFile.replace('__REPLACE_ME_SC__', snakeCase(st))
+export const replaceTitle = (title: string, inFile: string): string =>
+  inFile.replace(/__REPLACE_ME_TITLE__/, title)
+export const replaceCamelCase = (st: string, inFile: string): string =>
+  inFile.replace(/__REPLACE_ME_CC__/, camelcase(st))
+export const replaceSnakeCase = (st: string, inFile: string): string =>
+  inFile.replace(/__REPLACE_ME_SC__/, snakeCase(st))
 
 export const replaceWith = (string: string, inFile: string): string => {
-  let contents = string
+  let content = inFile
 
-  contents = replaceTitle(contents, inFile)
-  contents = replaceCamelCase(contents, inFile)
-  contents = replaceSnakeCase(contents, inFile)
+  content = replaceTitle(string, content)
+  content = replaceCamelCase(string, content)
+  content = replaceSnakeCase(string, content)
 
-  return contents
+  return content
 }
 
 export const validateName = input => {
