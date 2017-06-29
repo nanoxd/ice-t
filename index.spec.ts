@@ -6,6 +6,14 @@ import {
   replaceWith,
 } from './templater'
 
+declare global {
+  namespace jest {
+    interface Matchers<R> {
+      toContainSubstring(argument: string): void
+    }
+  }
+}
+
 expect.extend({
   toContainSubstring(received: string, argument: string) {
     const pass = received.includes(argument)
