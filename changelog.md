@@ -1,5 +1,9 @@
 ## Current
 
+## 0.0.5
+
+* Reverse ordering of input string
+
 ## 0.0.4
 
 * Actually use the replaced strings
