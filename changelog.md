@@ -1,5 +1,7 @@
 ## Current
 
+## 0.0.3
+
 * Fix isIncluded crash
 
 ## 0.0.2
