@@ -3,7 +3,26 @@ import {
   replaceCamelCase,
   replaceSnakeCase,
   isIncluded,
+  replaceWith,
 } from './templater'
+
+expect.extend({
+  toContainSubstring(received: string, argument: string) {
+    const pass = received.includes(argument)
+    if (pass) {
+      return {
+        message: () => `expected ${received} to contain substring ${argument}`,
+        pass: true,
+      }
+    } else {
+      return {
+        message: () =>
+          `expected ${received} to not contain substring ${argument}`,
+        pass: false,
+      }
+    }
+  },
+})
 
 describe('validateName', () => {
   it('should validate name', () => {
@@ -55,5 +74,21 @@ describe('replacements', () => {
     const replacement = '__REPLACE_ME_SC__'
 
     expect(replaceSnakeCase(title, replacement)).toBe('super_cool_drumsticks')
+  })
+
+  it('should convert strings when there is more content available', () => {
+    const longText = `
+      {
+        "name": "__REPLACE_ME_TITLE__",
+        "version": "1.0.0",
+        "description": "A description fit for a package",
+        "homepage": "https://github.com/nanoxd/__REPLACE_ME_CC__.git"
+      }
+    `
+
+    let replacedContent = replaceWith('FakePackage', longText)
+
+    expect(replacedContent).toContainSubstring('FakePackage')
+    expect(replacedContent).toContainSubstring('fakePackage')
   })
 })
