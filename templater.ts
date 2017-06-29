@@ -28,11 +28,11 @@ export const copyContents = (templatePath: string, projectPath: string) => {
       const contents = readFile(origFilePath)
 
       console.log('Replacing strings')
-      replaceWith(projectPath, contents)
+      const replacedContent = replaceWith(projectPath, contents)
 
       const writePath = `${directoryProjectPath}/${file}`
       console.log('Writing file: ', writePath)
-      fs.writeFileSync(writePath, contents)
+      fs.writeFileSync(writePath, replacedContent)
     } else if (stat.isDirectory()) {
       if (!isIncluded(file, BLACKLIST)) {
         fs.mkdirSync(`${directoryProjectPath}/${file}`)
@@ -55,10 +55,14 @@ export const replaceCamelCase = (st: string, inFile: string) =>
 export const replaceSnakeCase = (st: string, inFile: string) =>
   inFile.replace('__REPLACE_ME_SC__', snakeCase(st))
 
-export const replaceWith = (string: string, inFile: string) => {
-  replaceTitle(string, inFile)
-  replaceCamelCase(string, inFile)
-  replaceSnakeCase(string, inFile)
+export const replaceWith = (string: string, inFile: string): string => {
+  let contents = string
+
+  contents = replaceTitle(contents, inFile)
+  contents = replaceCamelCase(contents, inFile)
+  contents = replaceSnakeCase(contents, inFile)
+
+  return contents
 }
 
 export const validateName = input => {

@@ -1,5 +1,7 @@
 ## Current
 
+* Actually use the replaced strings
+
 ## 0.0.3
 
 * Fix isIncluded crash
