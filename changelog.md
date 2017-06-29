@@ -1,5 +1,7 @@
 ## Current
 
+## 0.0.4
+
 * Actually use the replaced strings
 
 ## 0.0.3
