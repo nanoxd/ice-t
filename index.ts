@@ -13,13 +13,13 @@ const QUESTIONS = [
     name: 'template',
     type: 'list',
     message: 'What template would you like to generate?',
-    choices
+    choices,
   },
   {
     name: 'name',
     message: 'Project Name',
-    validate: validateName
-  }
+    validate: validateName,
+  },
 ]
 
 const pathForTemplate = name => `${templatesPath}/${name}`
